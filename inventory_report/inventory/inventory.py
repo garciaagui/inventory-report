@@ -5,32 +5,39 @@ import json
 
 
 class Inventory:
-    def __read_file(path: str, file):
-        file_extension = path.split(".")[-1]
+    def __read_csv(file, inventory):
+        data = csv.DictReader(file, delimiter=",", quotechar='"')
 
-        if file_extension == "csv":
-            return csv.DictReader(file, delimiter=",", quotechar='"')
+        for row in data:
+            inventory.append(row)
 
-        elif file_extension == "json":
-            return json.load(file)
+        return inventory
+
+    def __read_json(file, inventory):
+        data = json.load(file)
+
+        for row in data:
+            inventory.append(row)
+
+        return inventory
 
     @classmethod
     def import_data(cls, path: str, report_type: str):
         report = SimpleReport if report_type == "simples" else CompleteReport
 
         try:
-            invetory = []
+            inventory = []
 
             with open(path) as file:
-                data = cls.__read_file(path, file)
+                file_extension = path.split(".")[-1]
 
-                for row in data:
-                    invetory.append(row)
+                if file_extension == "csv":
+                    inventory = cls.__read_csv(file, inventory)
 
-            return report.generate(invetory)
+                else:
+                    inventory = cls.__read_json(file, inventory)
+
+            return report.generate(inventory)
 
         except FileNotFoundError:
             print("File not found, check if the path is valid")
-
-
-print(Inventory.import_data("inventory_report/data/inventory.json", "simples"))
