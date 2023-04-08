@@ -19,7 +19,7 @@
 
 **30th project** of the [Trybe][trybe-site-url] Web Development course.
 
-The Inventory Report is a Python project focused on generating simple and complete inventory reports from data stored in CSV, JSON, and XML files. In order to create an efficient and scalable system, Object-Oriented Programming concepts were applied, as well as design patterns such as Adapter, Strategy, Iterator, and Decorator.
+The Inventory Report is a [Python][python-url] project focused on generating simple and complete inventory reports from data stored in CSV, JSON, and XML files. In order to create an efficient and scalable system, Object-Oriented Programming concepts were applied, as well as design patterns such as Adapter, Strategy, Iterator, and Decorator.
 
 > ℹ️ I wrote tests for the functions implemented by Trybe. These tests can be found in the `tests` subdirectories.
 
