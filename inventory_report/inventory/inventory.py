@@ -66,3 +66,6 @@ class Inventory:
 
         except FileNotFoundError:
             print("File not found, check if the path is valid")
+
+
+#
