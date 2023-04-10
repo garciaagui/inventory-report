@@ -6,11 +6,10 @@ class JsonImporter(Importer):
     @classmethod
     def import_data(cls, path: str):
         try:
-            file_extension = path.split(".")[-1]
             inventory = []
 
-            if file_extension != "json":
-                raise ValueError("Arquivo inválido")
+            if not path.endswith(".json"):
+                raise ValueError("Invalid file")
 
             with open(path) as file:
                 data = load(file)

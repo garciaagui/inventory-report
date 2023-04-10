@@ -6,11 +6,10 @@ class XmlImporter(Importer):
     @classmethod
     def import_data(cls, path: str):
         try:
-            file_extension = path.split(".")[-1]
             inventory = []
 
-            if file_extension != "xml":
-                raise ValueError("Arquivo inválido")
+            if not path.endswith(".xml"):
+                raise ValueError("Invalid file")
 
             with open(path) as file:
                 tree = ET.parse(file)
