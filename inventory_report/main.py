@@ -6,17 +6,13 @@ from inventory_report.importer.xml_importer import XmlImporter
 
 
 def generate_report(path: str, report_type: str):
-    if path.endswith(".csv"):
-        return Inventory(CsvImporter).import_data(path, report_type)
+    file_extension = path.split(".")[-1]
+    importers = dict(csv=CsvImporter, json=JsonImporter, xml=XmlImporter)
 
-    elif path.endswith(".json"):
-        return Inventory(JsonImporter).import_data(path, report_type)
+    if file_extension not in importers:
+        raise ValueError("Invalid file")
 
-    elif path.endswith(".xml"):
-        return Inventory(XmlImporter).import_data(path, report_type)
-
-    else:
-        raise ValueError("Arquivo inválido")
+    return Inventory(importers[file_extension]).import_data(path, report_type)
 
 
 def main():
@@ -28,4 +24,4 @@ def main():
         print(report, end="")
 
     except ValueError:
-        print("Verifique os argumentos", file=sys.stderr)
+        print("Check the arguments", file=sys.stderr)
