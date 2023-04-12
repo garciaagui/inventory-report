@@ -1,7 +1,8 @@
 from collections.abc import Iterable
-from inventory_report.inventory.inventory_iterator import InventoryIterator
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
+from ..inventory.inventory_iterator import InventoryIterator
+from ..reports.simple_report import SimpleReport
+from ..reports.complete_report import CompleteReport
+from ..reports.colored_report import ColoredReport
 
 
 class Inventory(Iterable):
@@ -9,8 +10,20 @@ class Inventory(Iterable):
         self.importer = importer
         self.data = []
 
+    def __define_report(self, report_type: str):
+        reports = dict(
+            simple=SimpleReport,
+            complete=CompleteReport,
+            colored=ColoredReport,
+        )
+
+        if report_type not in reports:
+            raise ValueError("Report type must be simple, complete or colored")
+
+        return reports[report_type]
+
     def import_data(self, path: str, report_type: str):
-        report = SimpleReport if report_type == "simples" else CompleteReport
+        report = self.__define_report(report_type)
         imported_data = self.importer.import_data(path)
         self.data.extend(imported_data)
 
