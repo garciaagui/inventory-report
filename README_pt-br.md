@@ -82,6 +82,27 @@ source .venv/bin/activate
 python3 -m pip install -r dev-requirements.txt
 ```
 
+6. Para gerar os relatórios, execute o comando abaixo.
+
+```
+pip install .
+```
+
+7. Agora, é possível gerar os relatórios seguindo o modelo de comando abaixo.
+
+```
+inventory_report <caminho_do_arquivo_input> <tipo_de_relatório>
+```
+
+-   Exemplo:
+
+```
+inventory_report inventory_report/data/inventory.csv simple
+
+```
+
+-   Valores aceitos para `tipo_de_relatório`: simple, complete, colored.
+
 <details>
   <summary><strong> ℹ️ Para instruções adicionais, clique aqui.</strong></summary><br />
 
@@ -94,7 +115,7 @@ python3 -m pytest
 -   🧪 Para rodar apenas um arquivo de teste, siga o exemplo abaixo.
 
 ```
-python3 -m pytest tests/product/test_product.py
+python3 -m pytest tests/product/test_create_product_sucessfully.py
 ```
 
 -   🧪 Para rodar apenas um teste específico, siga o exemplo abaixo.
