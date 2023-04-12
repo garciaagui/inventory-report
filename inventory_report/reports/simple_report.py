@@ -52,13 +52,12 @@ class SimpleReport:
 
     @classmethod
     def generate(cls, products: "list[dict]") -> str:
-
         oldest_date = cls.__get_oldest_manufacturing_date(products)
         nearest_date = cls.__get_nearest_expiration_date(cls, products)
         company = cls.__get_company_with_more_products(products)
 
         return (
-            f"Data de fabricação mais antiga: {oldest_date}\n"
-            f"Data de validade mais próxima: {nearest_date}\n"
-            f"Empresa com mais produtos: {company}"
+            f"Oldest manufacturing date: {oldest_date}\n"
+            f"Nearest expiration date: {nearest_date}\n"
+            f"Company with more products: {company}"
         )
