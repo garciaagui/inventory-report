@@ -19,7 +19,7 @@
 
 Projeto **30** do curso de Desenvolvimento Web da [Trybe][trybe-site-url].
 
-O Inventory Report é um projeto desenvolvido em [Python][python-url] focado na geração de relatórios de estoque simples e completos a partir de dados de arquivos nos formatos CSV, JSON e XML. Com o objetivo de criar um sistema eficiente e escalável, foram aplicados conceitos de Programação Orientada a Objetos, bem como padrões de projeto como Adapter, Strategy, Iterator e Decorator
+O Inventory Report é um projeto desenvolvido em [Python][python-url] focado na geração de relatórios de estoque simples e completos a partir de dados de arquivos nos formatos CSV, JSON e XML. Com o objetivo de criar um sistema eficiente e escalável, foram aplicados conceitos de Programação Orientada a Objetos, bem como padrões de projeto como Adapter, Strategy e Iterator.
 
 > ℹ️ Escrevi testes para as funções implementadas pelo Trybe. Esses testes podem ser encontrados nos subdiretórios de `tests`.
 
@@ -82,7 +82,7 @@ source .venv/bin/activate
 python3 -m pip install -r dev-requirements.txt
 ```
 
-6. Para gerar os relatórios, execute o comando abaixo.
+6. Execute o comando abaixo para ativar o gerador de relatórios.
 
 ```
 pip install .
