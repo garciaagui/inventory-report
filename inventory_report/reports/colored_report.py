@@ -1,13 +1,13 @@
 import re
+from ..reports.complete_report import CompleteReport
 
 
-class ColoredReport:
-    def __init__(self, report_type):
-        self.report_type = report_type
+class ColoredReport(CompleteReport):
+    @classmethod
+    def generate(cls, products: "list[dict]") -> str:
+        report = super().generate(products)
 
-    def generate(self, products_list):
-        report = self.report_type.generate(products_list)
-        index_start = report.find("mais produtos:") + 15
+        index_start = report.find("more products:") + 15
         index_finish = report.find("\n", index_start)
         if index_finish == -1:
             index_finish = len(report)
@@ -21,9 +21,9 @@ class ColoredReport:
         )
 
         green_phrases = [
-            "Data de fabricação mais antiga:",
-            "Data de validade mais próxima:",
-            "Empresa com mais produtos:",
+            "Oldest manufacturing date:",
+            "Nearest expiration date:",
+            "Company with more products:",
         ]
 
         for phrase in green_phrases:

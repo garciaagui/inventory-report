@@ -19,9 +19,9 @@ class Product:
 
     def __repr__(self):
         return (
-            f"O produto {self.nome_do_produto}"
-            f" fabricado em {self.data_de_fabricacao}"
-            f" por {self.nome_da_empresa} com validade"
-            f" até {self.data_de_validade}"
-            f" precisa ser armazenado {self.instrucoes_de_armazenamento}."
+            f"The product {self.nome_do_produto}"
+            f" manufactured in {self.data_de_fabricacao}"
+            f" by {self.nome_da_empresa} valid"
+            f" until {self.data_de_validade}"
+            f" needs to be stored {self.instrucoes_de_armazenamento}."
         )

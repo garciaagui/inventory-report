@@ -6,11 +6,10 @@ class CsvImporter(Importer):
     @classmethod
     def import_data(cls, path: str):
         try:
-            file_extension = path.split(".")[-1]
             inventory = []
 
-            if file_extension != "csv":
-                raise ValueError("Arquivo inválido")
+            if not path.endswith(".csv"):
+                raise ValueError("Invalid file")
 
             with open(path) as file:
                 data = DictReader(file, delimiter=",", quotechar='"')

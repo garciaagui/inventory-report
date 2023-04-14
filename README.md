@@ -19,7 +19,7 @@
 
 **30th project** of the [Trybe][trybe-site-url] Web Development course.
 
-The Inventory Report is a [Python][python-url] project focused on generating simple and complete inventory reports from data stored in CSV, JSON, and XML files. In order to create an efficient and scalable system, Object-Oriented Programming concepts were applied, as well as design patterns such as Adapter, Strategy, Iterator, and Decorator.
+The Inventory Report is a [Python][python-url] project focused on generating simple and complete inventory reports from data stored in CSV, JSON, and XML files. In order to create an efficient and scalable system, Object-Oriented Programming concepts were applied, as well as design patterns such as Adapter, Strategy and Iterator.
 
 > ℹ️ I wrote tests for the functions implemented by Trybe. These tests can be found in the `tests` subdirectories.
 
@@ -84,6 +84,27 @@ source .venv/bin/activate
 python3 -m pip install -r dev-requirements.txt
 ```
 
+6. Run the command below to enable report generator.
+
+```
+pip install .
+```
+
+7. Now, it's possible to generate the reports using the command pattern below.
+
+```
+inventory_report <input_file_path> <report_type>
+```
+
+-   Example:
+
+```
+inventory_report inventory_report/data/inventory.csv simple
+
+```
+
+-   Accepted values for `report_type`: simple, complete, colored.
+
 <details>
   <summary><strong> ℹ️ For additional instructions, click here.</strong></summary><br />
 
@@ -102,7 +123,7 @@ python3 -m pytest tests/product/test_product.py
 -   🧪 To run only one specific test, follow the example below.
 
 ```
-python3 -m pytest -k test_cria_produto
+python3 -m pytest -k test_create_product_sucessfully
 ```
 
 -   If you wish to manually test directly in the modules where the functions were implemented, follow the example below.

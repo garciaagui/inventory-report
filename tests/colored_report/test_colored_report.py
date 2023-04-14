@@ -1,8 +1,7 @@
 from inventory_report.reports.colored_report import ColoredReport
-from inventory_report.reports.simple_report import SimpleReport
 
 
-def test_decorar_relatorio(capsys):
+def test_colored_report(capsys):
     mocked_data = [
         {
             "id": "1",
@@ -32,7 +31,7 @@ def test_decorar_relatorio(capsys):
             "instrucoes_de_armazenamento": "instrucao 3",
         },
     ]
-    print(ColoredReport(SimpleReport).generate(mocked_data))
+    print(ColoredReport.generate(mocked_data))
 
     def green(sentence):
         return f"\033[32m{sentence}\033[0m"
@@ -44,9 +43,12 @@ def test_decorar_relatorio(capsys):
         return f"\033[31m{sentence}\033[0m\n"
 
     expected_print_output = (
-        f"{green('Data de fabricação mais antiga:')} {blue('2020-12-06')}"
-        f"{green('Data de validade mais próxima:')} {blue('2023-09-17')}"
-        f"{green('Empresa com mais produtos:')} {red('Target Corporation')}"
+        f"{green('Oldest manufacturing date:')} {blue('2020-12-06')}"
+        f"{green('Nearest expiration date:')} {blue('2023-09-17')}"
+        f"{green('Company with more products:')} {red('Target Corporation')}"
+        f"Products stocked by company:\n"
+        f"- Target Corporation: 2\n"
+        f"- Galena Biopharma: 1\n\n"
     )
 
     captured, _ = capsys.readouterr()
